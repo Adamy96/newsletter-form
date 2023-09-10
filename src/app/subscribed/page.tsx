@@ -3,9 +3,10 @@ import { useRouter } from 'next/navigation'
 import { Button } from '@components'
 import styles from './styles.module.scss'
 
-const Subscribed = (props: any) => {
+const Subscribed = ({ searchParams}: {
+  searchParams?: { [key: string]: string | string[] | undefined };
+}) => {
   const router = useRouter()
-  const { email } = props.searchParams
 
   return (
     <div className={styles.subscribed}>
@@ -14,7 +15,7 @@ const Subscribed = (props: any) => {
           <img src={'/assets/iconSuccess.svg'} />
           <h1>Thanks for<br/>subscribing!</h1>
           <p>
-            A confirmation email has been sent to <strong>{email}</strong>. Please open 
+            A confirmation email has been sent to <strong>{searchParams?.email}</strong>. Please open 
             it and click the button inside to confirm your subscription.
           </p>
         </div>
@@ -25,17 +26,6 @@ const Subscribed = (props: any) => {
       </div>
     </div>
   )
-}
-
-export async function getServerSideProps(context: any) {
-  const { query } = context;
-  const { email } = query;
-
-  return {
-    props: {
-      email
-    }
-  };
 }
 
 export default Subscribed
