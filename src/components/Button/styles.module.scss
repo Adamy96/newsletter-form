@@ -1,0 +1,25 @@
+.btn {
+  border-radius: 8px;
+  width: 100%;
+  background-color: var(--color-primary-darkest);
+  color: var(--color-neutral-lightest);
+  border: 0;
+  padding: 16px;
+  font-weight: 700;
+  position: relative;
+  transform-style: preserve-3d;
+
+  &:hover {
+    cursor: pointer;
+    background-image: linear-gradient(to right, #FF557A, #FE6A3E);
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: -5px;
+      transform: translate3d(0px, 4px, -1px);
+      background: #FFCDCC;
+      filter: blur(6px);
+    }
+  }
+}
